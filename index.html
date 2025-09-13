@@ -30,7 +30,7 @@
     <div class="ui">
       <div id="t1" class="t1">あおでーす。</div>
       <!-- JS가 죽어도 이동되도록 href를 넣는다 -->
-      <a id="enter" class="t2" href="index.html" rel="nofollow">入り</a>
+      <a id="enter" class="t2" href="archive.html" rel="nofollow">入り</a>
     </div>
   </div>
 
@@ -47,8 +47,8 @@
     enter.addEventListener('click', (e)=>{
       try { chirp.currentTime = 0; chirp.play(); } catch(_) {}
       e.preventDefault();                     // 기본 이동 잠시 중단
-      const url = enter.getAttribute('archive.html'); // 목표 주소
-      setTimeout(()=> { window.location.assign(url); }, 250);
+      const url = enter.getAttribute('href'); // 목표 주소
+      setTimeout(()=> { window.location.assign(url); }, 1000);
     });
   </script>
 </body>
