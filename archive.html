@@ -1,15 +1,74 @@
-<!-- index.html (최소 버전 예시) -->
-<!doctype html><html lang="ko"><meta charset="utf-8">
-<title>itsumoAo lab — index</title>
-<style>
-  body{margin:0;display:flex;min-height:100vh;align-items:center;justify-content:center;background:#0e1116;color:#e8eef4;font-family:sans-serif}
-  .wrap{text-align:center}
-  a{display:block;margin:8px 0;color:#a27bff;text-decoration:none}
-  a:hover{text-decoration:underline}
-  .title{margin-bottom:16px;opacity:.9}
-</style>
-<body><main class="wrap">
-  <h1 class="title">いつも青のラボ · index</h1>
-  <a href="file-0001.html">file no.0001　자기소개</a>
-  <a href="file-0002.html">file no.0002　첫 곡 / MV 노트</a>
-</main></body></html>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>itsumoAo Archive</title>
+  <style>
+    @font-face {
+      font-family: 'DotGothic16';
+      src: url('./assets/fonts/DotGothic16-Regular.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    body {
+      margin: 0; padding: 0;
+      height: 100vh; width: 100%;
+      background: url("assets/archive_background.jpg") center/cover no-repeat fixed;
+      font-family: "BIZ UDGothic", system-ui, sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #f2f5f8;
+    }
+
+    .content-box {
+      background: rgba(0,0,0,0.5);
+      width: 60%;
+      max-height: 60%;
+      padding: 20px;
+      border-radius: 10px;
+      overflow-y: auto;
+      text-align: center;
+    }
+
+    .message {
+      margin-top: 20px;
+      font-size: 1.2em;
+      cursor: pointer;
+      user-select: none;
+      font-family: 'DotGothic16', sans-serif;
+      letter-spacing: 0.05em;
+    }
+    
+    .message:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="content-box">
+    <h2>file no.0001</h2>
+    <p>この空間にはファイル、日記、ストーリーの内容が入ります。</p>
+    <p>スクロールが必要な場合は自動的にスクロールします。</p>
+  </div>
+
+  <div class="message" id="message">「おはよう。今日もやってみようかな。」</div>
+
+  <script>
+    const messages = [
+      "「少し休んでもいいよ。」",
+      "「ネオンのように透明に。」,
+      "「まだ続けよう。」",
+      "「君は素晴らしいよ！」"
+    ];
+
+    const msgEl = document.getElementById("message");
+    msgEl.addEventListener("click", ()=>{
+      const rand = Math.floor(Math.random()*messages.length);
+      msgEl.textContent = messages[rand];
+    });
+  </script>
+</body>
+</html>
