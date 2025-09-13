@@ -27,22 +27,23 @@
       font-family: 'BIZ-UDGOTHICB', system-ui, sans-serif;
       color: #f2f5f8;
       display: flex; flex-direction: column; align-items: center; justify-content: center;
-      line-height: 1.6;
+      line-height: 1.7;
       text-align: center;
+      font-size: 1.15rem; /* 전체 글자 기본 크기 살짝 확대 */
     }
 
     .content-box {
       background: rgba(0,0,0,0.5);
       width: min(900px, 92vw);
       max-height: 60vh;
-      padding: 24px 36px;
+      padding: 28px 40px;
       border-radius: 12px;
       overflow-y: auto;
       text-align: center;
       box-shadow: 0 12px 32px rgba(0,0,0,.35);
       backdrop-filter: blur(8px);
-      font-size: 1.1rem;
-      letter-spacing: 0.03em;
+      font-size: 1.2rem; /* 본문 크기 살짝 확대 */
+      letter-spacing: 0.035em;
     }
 
     .lab-title {
@@ -50,8 +51,8 @@
       top: -6vh;
       margin-bottom: -4vh;
       font-family: 'DotGothic16', sans-serif;
-      font-size: clamp(20px, 2.5vw, 32px);
-      letter-spacing: 0.08em;
+      font-size: clamp(22px, 2.7vw, 34px);
+      letter-spacing: 0.09em;
       font-weight: 700;
       text-align: center;
       color: #ffffff;
@@ -61,13 +62,13 @@
 
     .content-box h2 {
       margin: 1.3em 0 0.5em;
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       font-weight: bold;
     }
 
     .content-box p {
       margin: 0.4em 0 1.1em;
-      font-size: 1.15rem;
+      font-size: 1.25rem;
       cursor: pointer;
       text-decoration: none;
     }
@@ -75,10 +76,10 @@
     .content-box p:hover { text-decoration: underline; }
 
     .message {
-      margin-top: 45px;
+      margin-top: 50px;
       cursor: pointer; user-select: none;
       font-family: 'DotGothic16', sans-serif;
-      font-size: 1.5em;
+      font-size: 1.6em;
       letter-spacing: 0.07em;
       text-align: center;
     }
@@ -95,43 +96,24 @@
 </head>
 <body>
 
-  <div class="lab-title">いつも青のラボ</div>
+  <div class="lab-title">ファイル00001</div>
 
   <div class="content-box">
-    <h2>ファイル00001</h2>
-    <p onclick="location.href='dsek.html'">これはなんでしょう</p>
-    <h2>ファイル00002</h2>
-    <p>コード進行の秘密</p>
-    <h2>ファイル00003</h2>
-    <p>キラキラ星野</p>
-    <h2>ファイル00004</h2>
-    <p>君と映画</p>
-    <h2>ファイル00005</h2>
-    <p>曲作り方</p>
-    <h2>ファイル00006</h2>
-    <p>甘い恋</p>
-    <h2>ファイル00007</h2>
-    <p>悲しくない</p>
-    <h2>ファイル00008</h2>
-    <p>ピアノが欲しい</p>
-    <h2>ファイル00009</h2>
-    <p>何食べよかな</p>
-    <h2>ファイル00010</h2>
-    <p>君が今何してるの</p>
-    <h2>ファイル00011</h2>
-    <p>今日もお疲れ様でした</p>
-    <h2>ファイル00012</h2>
-    <p>明日は明日</p>
+    <h2>１９９９年9月13日、土曜日</h2>
+    <p> 今日は曲作りが上手く出来なかった。</p>
+    <p>コード進行むずかしいな</p>
+    <p>また明日。。。</p>
+
   </div>
 
-  <div class="message" id="message"><p>「おはよう。今日もやってみようかな。」</p></div>
+  <div class="message" id="message"><p>「ごんばんは。」</p></div>
 
   <script>
     const messages = [
-      '「少し休んでもいいよ。」',
-      '「ネオンのように透明に。」',
-      '「まだ続けよう。」',
-      '「君は素晴らしいよ！」'
+      '「少し疲れちゃった。」',
+      '「。。。。」',
+      '「お腹すいた。」',
+      '「え？？ホントに？？」'
     ];
 
     const msgEl = document.getElementById('message');
