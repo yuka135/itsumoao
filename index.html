@@ -2,55 +2,54 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
-<title>itsumoAo intro</title>
+<title>いつも青のラボ — intro</title>
 <style>
-  html,body {
-    margin:0; padding:0;
-    height:100%; width:100%;
-    display:flex; justify-content:center; align-items:center;
+  html,body{
+    margin:0; padding:0; height:100%; width:100%;
     background:url("assets/itsumoao_front_background.jpg") no-repeat center center/cover;
-    font-family:url("fonts/BIZ-UDGOTHICB.TTC", sans-serif;
-    color:#f2f5f8;
-    overflow:hidden;
-    transition: opacity 1s ease;
+    font-family:"Noto Sans JP", system-ui, sans-serif; color:#f2f5f8;
   }
-  .text {
-    font-size: 2.8rem;
-    opacity:0;
-    transition: opacity 1.5s ease;
-    position:absolute;
-    text-shadow:0 2px 8px rgba(0,0,0,.6);
+  .stage{position:relative; height:100vh; width:100vw; display:flex; align-items:center; justify-content:center}
+  .layer{position:absolute; inset:0; z-index:1;} /* 배경 레이어(이미지면 여기에) */
+  .ui{position:relative; z-index:5; text-align:center; text-shadow:0 2px 8px rgba(0,0,0,.55);}
+  .t1{font-size:2.4rem; opacity:0; transition:opacity 1.2s ease; margin-bottom:1.5rem}
+  .t2{
+    display:inline-block; padding:.4rem 1.1rem; border-radius:999px; cursor:pointer;
+    font-size:1.4rem; opacity:0; transition:opacity 1.2s ease, transform .15s ease;
+    background:rgba(0,0,0,.28); border:1px solid rgba(255,255,255,.2); color:#f2f5f8; text-decoration:none;
   }
-  #t1 { top:40%; }
-  #t2 { top:60%; cursor:pointer; }
-  #t1.show, #t2.show { opacity:1; }
+  .t2:hover{ transform: translateY(-1px); }
+  .show{opacity:1}
 </style>
 </head>
 <body>
+  <audio id="chirp" src="assets/bird.mp3" preload="auto"></audio>
 
-<audio id="chirp" src="assets/bird.mp3" preload="auto"></audio>
+  <div class="stage">
+    <!-- 배경 이미지는 body background로 처리했으니 별도 레이어 필요없음 -->
+    <div class="ui">
+      <div id="t1" class="t1">あおでーす。</div>
+      <!-- JS가 죽어도 이동되도록 href를 넣는다 -->
+      <a id="enter" class="t2" href="index.html" rel="nofollow">入り</a>
+    </div>
+  </div>
 
-<div id="t1" class="text">あおでーす。</div>
-<div id="t2" class="text">入り</div>
+  <script>
+    const t1 = document.getElementById('t1');
+    const enter = document.getElementById('enter');
+    const chirp = document.getElementById('chirp');
 
-<script>
-  const t1 = document.getElementById("t1");
-  const t2 = document.getElementById("t2");
-  const chirp = document.getElementById("chirp");
+    // 순차 표시
+    setTimeout(()=> t1.classList.add('show'), 400);
+    setTimeout(()=> enter.classList.add('show'), 2000);
 
-  // 첫 문구 등장
-  setTimeout(()=>{ t1.classList.add("show"); }, 500);
-
-  // 두 번째 문구 등장
-  setTimeout(()=>{ t2.classList.add("show"); }, 2500);
-
-  // 클릭 이벤트 → 새소리 + 페이드아웃 후 이동
-  t2.addEventListener("click", ()=>{
-    chirp.play();
-    document.body.style.opacity = 0;
-    setTimeout(()=>{ window.location.href="index.html"; }, 1200);
-  });
-</script>
-
+    // 클릭 시: 소리 재생 + 살짝 딜레이 후 이동 (a의 기본 동작은 잠시 막았다가 우리가 이동)
+    enter.addEventListener('click', (e)=>{
+      try { chirp.currentTime = 0; chirp.play(); } catch(_) {}
+      e.preventDefault();                     // 기본 이동 잠시 중단
+      const url = enter.getAttribute('href'); // 목표 주소
+      setTimeout(()=> { window.location.assign(url); }, 250);
+    });
+  </script>
 </body>
 </html>
