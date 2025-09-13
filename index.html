@@ -30,7 +30,7 @@
     <div class="ui">
       <div id="t1" class="t1">あおでーす。</div>
       <!-- JS가 죽어도 이동되도록 href를 넣는다 -->
-      <a id="enter" class="t2" href="archive.html" rel="nofollow">入り</a>
+      <a id="enter" class="t2" href="./archive.html" rel="nofollow">入り</a>
     </div>
   </div>
 
@@ -44,12 +44,12 @@
     setTimeout(()=> enter.classList.add('show'), 2000);
 
     // 클릭 시: 소리 재생 + 살짝 딜레이 후 이동 (a의 기본 동작은 잠시 막았다가 우리가 이동)
-    enter.addEventListener('click', (e)=>{
-      try { chirp.currentTime = 0; chirp.play(); } catch(_) {}
-      e.preventDefault();                     // 기본 이동 잠시 중단
-      const url = enter.getAttribute('href'); // 목표 주소
-      setTimeout(()=> { window.location.assign(url); }, 1000);
-    });
+enter.addEventListener('click', (e)=>{
+  e.preventDefault();
+  try { chirp.currentTime = 0; chirp.play(); } catch(_) {}
+  const url = enter.getAttribute('href');  // "./archive.html"
+  chirp.onended = () => { window.location.assign(url); };
+});
   </script>
 </body>
 </html>
