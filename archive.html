@@ -27,18 +27,21 @@
       font-family: 'BIZ-UDGOTHICB', system-ui, sans-serif;
       color: #f2f5f8;
       display: flex; flex-direction: column; align-items: center; justify-content: center;
+      line-height: 1.6; /* 기본 줄간격 */
     }
 
     .content-box {
       background: rgba(0,0,0,0.5);
       width: min(900px, 92vw);
       max-height: 60vh;
-      padding: 20px 24px;
+      padding: 20px 32px;
       border-radius: 12px;
       overflow-y: auto;
-      text-align: center;
+      text-align: left; /* 내용 가독성 */
       box-shadow: 0 12px 32px rgba(0,0,0,.35);
       backdrop-filter: blur(8px);
+      font-size: 1rem; /* 본문 크기 */
+      letter-spacing: 0.03em; /* 자간 */
     }
 
     .lab-title {
@@ -52,22 +55,31 @@
       text-align: center;
       color: #ffffff;
       pointer-events: none;
-      text-shadow: 0 0 4px rgba(0,0,0,0.4); /* 얇은 블러 그림자 */
+      text-shadow: 0 0 4px rgba(100,160,255,0.5); /* 얇은 블루 그림자 */
     }
+
+    .content-box h2 {
+      margin: 1.2em 0 0.4em;
+      font-size: 1.1rem;
+      font-weight: bold;
+    }
+
+    .content-box p {
+      margin: 0.3em 0 1em;
+      text-decoration: none;
+    }
+
+    .content-box p:hover { text-decoration: underline; }
 
     .message {
       margin-top: 45px;
       cursor: pointer; user-select: none;
       font-family: 'DotGothic16', sans-serif;
       font-size: 1.5em;
-      letter-spacing: 0.07em; /* 요청한 간격 */
+      letter-spacing: 0.07em;
       text-align: center;
     }
     .message p { margin: 0; text-decoration: none; }
-
-    /* content-box 안의 <p>만 밑줄 효과 */
-    .content-box p { margin: .2em 0; text-decoration: none; }
-    .content-box p:hover { text-decoration: underline; }
 
     @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
     .message:hover { animation: blink 1.5s infinite; }
