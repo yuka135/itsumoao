@@ -6,66 +6,79 @@
   <style>
     @font-face {
       font-family: 'DotGothic16';
-      src: url('./assets/fonts/DotGothic16-Regular.ttf') format('truetype');
+      src: url('assets/fonts/DotGothic16-Regular.ttf') format('truetype');
       font-weight: normal;
       font-style: normal;
+      font-display: swap;
     }
 
-    body {
+    html, body {
       margin: 0; padding: 0;
-      height: 100vh; width: 100%;
+      height: 100%; width: 100%;
       background: url("assets/archive_background.jpg") center/cover no-repeat fixed;
       font-family: "BIZ UDGothic", system-ui, sans-serif;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
       color: #f2f5f8;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
     }
 
     .content-box {
       background: rgba(0,0,0,0.5);
-      width: 60%;
-      max-height: 60%;
-      padding: 20px;
-      border-radius: 10px;
+      width: min(900px, 92vw);
+      max-height: 60vh;
+      padding: 20px 24px;
+      border-radius: 12px;
       overflow-y: auto;
       text-align: center;
+      box-shadow: 0 12px 32px rgba(0,0,0,.35);
+      backdrop-filter: blur(6px);
     }
 
     .lab-title {
-      font-size: 1.6em;
-      font-weight: bold;
-      margin-bottom: 16px;
+      position: relative;
+      top: -6vh;
+      margin-bottom: -4vh;
       font-family: 'DotGothic16', sans-serif;
+      font-size: clamp(18px, 2.2vw, 28px);
       letter-spacing: 0.08em;
+      font-weight: 700;
+      text-align: center;
       color: #ffffff;
-      text-shadow: 0 0 6px rgba(162,123,255,0.8);
+      text-shadow: 0 0 6px rgba(162,123,255,0.85);
+      pointer-events: none;
+      animation: sparkle 2.5s infinite alternate;
+    }
+
+    @keyframes sparkle {
+      0% { text-shadow: 0 0 4px rgba(162,123,255,0.5), 0 0 8px rgba(162,123,255,0.3); }
+      50% { text-shadow: 0 0 10px rgba(162,123,255,1), 0 0 20px rgba(162,123,255,0.8); }
+      100% { text-shadow: 0 0 4px rgba(162,123,255,0.5), 0 0 8px rgba(162,123,255,0.3); }
     }
 
     .message {
       margin-top: 20px;
-      font-size: 1.2em;
-      cursor: pointer;
-      user-select: none;
+      cursor: pointer; user-select: none;
       font-family: 'DotGothic16', sans-serif;
-      letter-spacing: 0.05em;
+      font-size: 1.2em;
+      letter-spacing: 0.07em;
+      text-align: center;
     }
+    .message p { margin: 0; text-decoration: none; }
+    .message p:hover { text-decoration: underline; }
 
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.3; }
-    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
+    .message:hover { animation: blink 1.5s infinite; }
 
-    .message:hover {
-      animation: blink 1.5s infinite;
-      text-decoration: none;
+    .content-box::-webkit-scrollbar{ width: 10px }
+    .content-box::-webkit-scrollbar-thumb{
+      background: rgba(162,123,255,.35); border-radius: 999px;
     }
   </style>
 </head>
 <body>
+
+  <div class="lab-title">いつも青のラボ</div>
+
   <div class="content-box">
-    <div class="lab-title">いつも青のラボ</div>
     <h2>ファイル00001</h2>
     <p>これはなんでしょう</p>
     <h2>ファイル00002</h2>
@@ -92,20 +105,20 @@
     <p>明日は明日</p>
   </div>
 
-  <div class="message" id="message">「おはよう。今日もやってみようかな。」</div>
+  <div class="message" id="message"><p>「おはよう。今日もやってみようかな。」</p></div>
 
   <script>
     const messages = [
-      "「少し休んでもいいよ。」",
-      "「ネオンのように透明に。」",
-      "「まだ続けよう。」",
-      "「君は素晴らしいよ！」"
+      '「少し休んでもいいよ。」',
+      '「ネオンのように透明に。」',
+      '「まだ続けよう。」',
+      '「君は素晴らしいよ！」'
     ];
 
-    const msgEl = document.getElementById("message");
-    msgEl.addEventListener("click", ()=>{
+    const msgEl = document.getElementById('message');
+    msgEl.addEventListener('click', ()=>{
       const rand = Math.floor(Math.random()*messages.length);
-      msgEl.textContent = messages[rand];
+      msgEl.querySelector('p').textContent = messages[rand];
     });
   </script>
 </body>
