@@ -11,6 +11,12 @@
       font-style: normal;
       font-display: swap;
     }
+    @font-face {
+      font-family: 'BIZ-UDGOTHICB';
+      src: url('assets/fonts/BIZ-UDGOTHICB.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
 
     html, body {
       margin: 0; padding: 0;
@@ -32,7 +38,6 @@
       box-shadow: 0 12px 32px rgba(0,0,0,.35);
       backdrop-filter: blur(8px);
     }
-    .lab-title p:hover { text-decoration: underline; }
 
     .lab-title {
       position: relative;
@@ -44,9 +49,10 @@
       font-weight: 700;
       text-align: center;
       color: #ffffff;
-      text-shadow: 0 0 6px rgba(162,123,255,0.85);
+      text-shadow: 0 0 6px rgba(0,0,0,0.55);
       pointer-events: none;
     }
+    .lab-title p:hover { text-decoration: underline; }
     
     .message {
       margin-top: 45px;
