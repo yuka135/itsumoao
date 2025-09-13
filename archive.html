@@ -6,87 +6,103 @@
   <style>
     @font-face {
       font-family: 'DotGothic16';
-      src: url('./assets/fonts/DotGothic16-Regular.ttf') format('truetype');
+      src: url('assets/fonts/DotGothic16-Regular.ttf') format('truetype');
       font-weight: normal;
       font-style: normal;
+      font-display: swap;
     }
 
-    body {
+    @font-face {
+      font-family: 'BIZ-UDGOTHICB';
+      src: url('assets/fonts/BIZ-UDGOTHICB.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    html, body {
       margin: 0; padding: 0;
-      height: 100vh; width: 100%;
+      height: 100%; width: 100%;
       background: url("assets/archive_background.jpg") center/cover no-repeat fixed;
-      font-family: "BIZ UDGothic", system-ui, sans-serif;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      font-family: 'BIZ-UDGOTHICB', system-ui, sans-serif;
       color: #f2f5f8;
-      font-size: 1.1rem; /* 전체 기본 크기 확대 */
-      line-height: 1.7; /* 전체 줄간격 */
-    }
-
-    .lab-title {
-      font-size: 1.8em; /* 타이틀 조금 확대 */
-      font-weight: bold;
-      margin-bottom: 24px;
-      font-family: 'DotGothic16', sans-serif;
-      letter-spacing: 0.08em;
-      color: #ffffff;
-      text-shadow: 0 0 6px rgba(162,123,255,0.8);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      line-height: 1.7;
+      text-align: center;
+      font-size: 1.15rem; /* 전체 글자 기본 크기 살짝 확대 */
     }
 
     .content-box {
       background: rgba(0,0,0,0.5);
-      width: 60%;
-      max-height: 60%;
-      padding: 24px;
-      border-radius: 10px;
+      width: min(900px, 92vw);
+      max-height: 60vh;
+      padding: 28px 40px;
+      border-radius: 12px;
       overflow-y: auto;
       text-align: center;
-      line-height: 1.8; /* 본문 줄간격 */
+      box-shadow: 0 12px 32px rgba(0,0,0,.35);
+      backdrop-filter: blur(8px);
+      font-size: 1.2rem; /* 본문 크기 살짝 확대 */
+      letter-spacing: 0.035em;
+    }
+
+    .lab-title {
+      position: relative;
+      top: -6vh;
+      margin-bottom: -4vh;
+      font-family: 'DotGothic16', sans-serif;
+      font-size: clamp(22px, 2.7vw, 34px);
+      letter-spacing: 0.09em;
+      font-weight: 700;
+      text-align: center;
+      color: #ffffff;
+      pointer-events: none;
+      text-shadow: 0 0 4px rgba(100,160,255,0.5);
     }
 
     .content-box h2 {
-      font-size: 1.3rem; /* h2 확대 */
-      margin: 1em 0 0.4em;
+      margin: 1.3em 0 0.5em;
+      font-size: 1.4rem;
+      font-weight: bold;
     }
 
     .content-box p {
-      font-size: 1.2rem; /* p 확대 */
-      margin: 0.3em 0 1em;
+      margin: 0.4em 0 1.1em;
+      font-size: 1.25rem;
+      cursor: pointer;
+      text-decoration: none;
     }
 
-    .content-box p:hover {
-      text-decoration: underline;
-    }
+    .content-box p:hover { text-decoration: underline; }
 
     .message {
-      margin-top: 24px;
-      font-size: 1.3em; /* 메시지도 조금 확대 */
-      cursor: pointer;
-      user-select: none;
+      margin-top: 50px;
+      cursor: pointer; user-select: none;
       font-family: 'DotGothic16', sans-serif;
+      font-size: 1.6em;
       letter-spacing: 0.07em;
+      text-align: center;
     }
+    .message p { margin: 0; text-decoration: none; }
 
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.3; }
-    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
+    .message:hover { animation: blink 1.5s infinite; }
 
-    .message:hover {
-      animation: blink 1.5s infinite;
-      text-decoration: none;
+    .content-box::-webkit-scrollbar{ width: 10px }
+    .content-box::-webkit-scrollbar-thumb{
+      background: rgba(162,123,255,.35); border-radius: 999px;
     }
   </style>
 </head>
 <body>
+
   <div class="lab-title">いつも青のラボ</div>
+
   <div class="content-box">
     <h2>ファイル00001</h2>
-    <p>これはなんでしょう</p>
+    <p onclick="location.href='dsek.html'">これはなんでしょう</p>
     <h2>ファイル00002</h2>
-    <p>コード進行の秘密</p>
+    <p onclick="location.href='dsek2.html'">コード進行の秘密</p>
     <h2>ファイル00003</h2>
     <p>キラキラ星野</p>
     <h2>ファイル00004</h2>
@@ -109,20 +125,20 @@
     <p>明日は明日</p>
   </div>
 
-  <div class="message" id="message">「おはよう。今日もやってみようかな。」</div>
+  <div class="message" id="message"><p>「おはよう。今日もやってみようかな。」</p></div>
 
   <script>
     const messages = [
-      "「少し休んでもいいよ。」",
-      "「ネオンのように透明に。」",
-      "「まだ続けよう。」",
-      "「君は素晴らしいよ！」"
+      '「少し休んでもいいよ。」',
+      '「ネオンのように透明に。」',
+      '「まだ続けよう。」',
+      '「君は素晴らしいよ！」'
     ];
 
-    const msgEl = document.getElementById("message");
-    msgEl.addEventListener("click", ()=>{
+    const msgEl = document.getElementById('message');
+    msgEl.addEventListener('click', ()=>{
       const rand = Math.floor(Math.random()*messages.length);
-      msgEl.textContent = messages[rand];
+      msgEl.querySelector('p').textContent = messages[rand];
     });
   </script>
 </body>
