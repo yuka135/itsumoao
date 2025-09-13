@@ -32,6 +32,7 @@
       box-shadow: 0 12px 32px rgba(0,0,0,.35);
       backdrop-filter: blur(8px);
     }
+    .lab-title p:hover { text-decoration: underline; }
 
     .lab-title {
       position: relative;
@@ -45,9 +46,8 @@
       color: #ffffff;
       text-shadow: 0 0 6px rgba(162,123,255,0.85);
       pointer-events: none;
-      animation: sparkle 2.5s infinite alternate;
     }
-
+    
     .message {
       margin-top: 45px;
       cursor: pointer; user-select: none;
@@ -57,7 +57,6 @@
       text-align: center;
     }
     .message p { margin: 0; text-decoration: none; }
-    .message p:hover { text-decoration: underline; }
 
     @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
     .message:hover { animation: blink 1.5s infinite; }
