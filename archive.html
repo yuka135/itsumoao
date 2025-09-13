@@ -33,6 +33,16 @@
       text-align: center;
     }
 
+    .lab-title {
+      font-size: 1.6em;
+      font-weight: bold;
+      margin-bottom: 16px;
+      font-family: 'DotGothic16', sans-serif;
+      letter-spacing: 0.08em;
+      color: #ffffff;
+      text-shadow: 0 0 6px rgba(162,123,255,0.8);
+    }
+
     .message {
       margin-top: 20px;
       font-size: 1.2em;
@@ -41,14 +51,21 @@
       font-family: 'DotGothic16', sans-serif;
       letter-spacing: 0.05em;
     }
-    
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
     .message:hover {
-      text-decoration: underline;
+      animation: blink 1.5s infinite;
+      text-decoration: none;
     }
   </style>
 </head>
 <body>
   <div class="content-box">
+    <div class="lab-title">いつも青のラボ</div>
     <h2>ファイル00001</h2>
     <p>これはなんでしょう</p>
     <h2>ファイル00002</h2>
