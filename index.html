@@ -47,7 +47,7 @@
     enter.addEventListener('click', (e)=>{
       try { chirp.currentTime = 0; chirp.play(); } catch(_) {}
       e.preventDefault();                     // 기본 이동 잠시 중단
-      const url = enter.getAttribute('href','archive.html'); // 목표 주소
+      const url = enter.getAttribute('archive.html'); // 목표 주소
       setTimeout(()=> { window.location.assign(url); }, 250);
     });
   </script>
