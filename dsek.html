@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>itsumoAo desk</title>
+
+    <style>
+    @font-face {
+      font-family: 'DotGothic16';
+      src: url('assets/fonts/DotGothic16-Regular.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'BIZ-UDGOTHICB';
+      src: url('assets/fonts/BIZ-UDGOTHICB.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    html, body {
+      margin: 0; padding: 0;
+      height: 100%; width: 100%;
+      background: url("assets/archive_background.jpg") center/cover no-repeat fixed;
+      font-family: 'BIZ-UDGOTHICB', system-ui, sans-serif;
+      color: #f2f5f8;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      line-height: 1.6;
+    }
+
+    .content-box {
+      background: rgba(0,0,0,0.5);
+      width: min(900px, 92vw);
+      max-height: 60vh;
+      padding: 20px 32px;
+      border-radius: 12px;
+      overflow-y: auto;
+      text-align: center; /* 가운데 정렬 */
+      box-shadow: 0 12px 32px rgba(0,0,0,.35);
+      backdrop-filter: blur(8px);
+      font-size: 1rem;
+      letter-spacing: 0.03em;
+    }
+
+    .lab-title {
+      position: relative;
+      top: -6vh;
+      margin-bottom: -4vh;
+      font-family: 'DotGothic16', sans-serif;
+      font-size: clamp(18px, 2.2vw, 28px);
+      letter-spacing: 0.08em;
+      font-weight: 700;
+      text-align: center;
+      color: #ffffff;
+      pointer-events: none;
+      text-shadow: 0 0 4px rgba(100,160,255,0.5);
+    }
+
+    .content-box h2 {
+      margin: 1.2em 0 0.4em;
+      font-size: 1.1rem;
+      font-weight: bold;
+    }
+
+    .content-box p {
+      margin: 0.3em 0 1em;
+      text-decoration: none;
+    }
+
+    .content-box p:hover { text-decoration: underline; }
+
+    .message {
+      margin-top: 45px;
+      cursor: pointer; user-select: none;
+      font-family: 'DotGothic16', sans-serif;
+      font-size: 1.5em;
+      letter-spacing: 0.07em;
+      text-align: center;
+    }
+    .message p { margin: 0; text-decoration: none; }
+
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
+    .message:hover { animation: blink 1.5s infinite; }
+
+    .content-box::-webkit-scrollbar{ width: 10px }
+    .content-box::-webkit-scrollbar-thumb{
+      background: rgba(162,123,255,.35); border-radius: 999px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="lab-title">ファイル00001</div>
+
+  <div class="content-box">
+    <h2>1995年9月13日、土曜日</h2>
+    <p>今日も曲作りがうまくできなかった<p>
+    <p>また明日</p>
+  </div>
+
+  <div class="message" id="message"><p>「。。。。。」</p></div>
+
+  <script>
+    const messages = [
+      '「たのしかった。」',
+      '「明日何曜日だったけ。。」',
+      '「お腹すいた。」',
+      '「え！？ホント？」'
+    ];
+
+    const msgEl = document.getElementById('message');
+    msgEl.addEventListener('click', ()=>{
+      const rand = Math.floor(Math.random()*messages.length);
+      msgEl.querySelector('p').textContent = messages[rand];
+    });
+  </script>
+</body>
+</html>
+      
